@@ -111,26 +111,28 @@
         let allStations = [];
         let routeLayers = {};
         let markers = {};
+        let normalLines = {}; // 存储普通干线
 
         // 初始化地图
         function initMap() {
-            map = L.map('map').setView([35.86, 104.19], 4);
+            map = L.map('map').setView([28.0, 110.0], 6); // 调整初始视角到南方
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
             }).addTo(map);
         }
 
-        // 加载数据
+        // 加载数据 - 从外部 routes.json 文件读取
         async function loadData() {
             try {
-                const response = await fetch('data.json');
+                const response = await fetch('routes.json');
                 routeData = await response.json();
                 populateStationSelects();
                 renderRoutes();
                 renderHubStations();
+                drawNormalLines(); // 绘制普通干线连接
             } catch (error) {
                 console.error('加载数据失败:', error);
-                alert('加载路线数据失败，请检查 data.json 文件是否存在');
+                alert('加载路线数据失败，请检查 routes.json 文件是否存在');
             }
         }
 
@@ -196,7 +198,8 @@
                 const polyline = L.polyline(latlngs, {
                     color: route.color,
                     weight: 4,
-                    opacity: 0.8
+                    opacity: 0.8,
+                    dashArray: '10, 10' // 虚线表示慢火车
                 }).addTo(map);
 
                 // 添加路线标签
@@ -212,7 +215,7 @@
                 routeLayers[route.id] = polyline;
 
                 // 添加站点标记
-                route.stations.forEach(function(station) {
+                route.stations.forEach(function(station, index) {
                     if (!markers[station.code]) {
                         const marker = L.circleMarker([station.lat, station.lng], {
                             radius: 8,
@@ -223,8 +226,14 @@
                             fillOpacity: 0.8
                         }).addTo(map);
 
-                        marker.on('click', function() { showStationInfo(station); });
+                        marker.on('click', function() { showStationInfo(station, route); });
                         markers[station.code] = marker;
+                    }
+                    
+                    // 记录相邻站点用于绘制普通干线
+                    if (index > 0) {
+                        const prevStation = route.stations[index - 1];
+                        addNormalLine(prevStation, station, route.color);
                     }
                 });
             });
@@ -252,6 +261,31 @@
             });
         }
 
+        // 添加普通干线连接（细实线）
+        function addNormalLine(s1, s2, color) {
+            const key = s1.code + '-' + s2.code;
+            const reverseKey = s2.code + '-' + s1.code;
+            
+            // 避免重复添加
+            if (normalLines[key] || normalLines[reverseKey]) return;
+            
+            const line = L.polyline([[s1.lat, s1.lng], [s2.lat, s2.lng]], {
+                color: color,
+                weight: 1,
+                opacity: 0.4,
+                dashArray: '' // 实线表示普通干线
+            });
+            line.addTo(map);
+            normalLines[key] = line;
+        }
+
+        // 绘制所有普通干线
+        function drawNormalLines() {
+            // 在 renderRoutes 中已经调用了 addNormalLine
+            // 这里可以添加额外的枢纽站之间的干线连接
+            console.log('普通干线已绘制');
+        }
+
         // 切换路线显示
         function toggleRoute(routeId, visible) {
             if (visible) {
@@ -261,8 +295,8 @@
             }
         }
 
-        // 显示站点信息
-        function showStationInfo(station) {
+        // 显示站点信息（支持传入 route 参数）
+        function showStationInfo(station, route) {
             const panel = document.getElementById('info-panel');
             const title = document.getElementById('info-title');
             const content = document.getElementById('info-content');
@@ -272,9 +306,13 @@
             for (let i = 0; i < Math.round(station.rating); i++) stars += '★';
             for (let i = 0; i < 5 - Math.round(station.rating); i++) stars += '☆';
             
-            content.innerHTML = '<p><strong>景点推荐:</strong><br>' + station.attractions.join(', ') + '</p>' +
+            let routeInfo = route ? '<p><strong>所属路线:</strong> ' + route.name + '</p>' : '';
+            
+            content.innerHTML = routeInfo +
+                '<p><strong>景点推荐:</strong><br>' + (station.attractions ? station.attractions.join(', ') : '暂无') + '</p>' +
                 '<p><strong>游客评分:</strong> <span class="rating">' + stars + '</span> (' + station.rating + '/5.0)</p>' +
-                '<p><strong>住宿攻略:</strong><br>' + station.accommodation + '</p>' +
+                '<p><strong>住宿攻略:</strong><br>' + (station.accommodation || station.stay_info || '暂无') + '</p>' +
+                '<p><strong>简介:</strong> ' + (station.desc || '暂无') + '</p>' +
                 '<p><strong>坐标:</strong> ' + station.lat.toFixed(2) + ', ' + station.lng.toFixed(2) + '</p>';
 
             panel.style.display = 'block';

@@ -1,1 +1,16 @@
-(data.json and index.html are source/config files, no build artifacts, dependencies, or temp files in the changes)
+```
+# Logs and temp files
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Original rules preserved
+*.log
+```
