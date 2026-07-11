@@ -1,0 +1,272 @@
+{
+  "routes": [
+    {
+      "id": "route_1",
+      "name": "成昆铁路慢火车 (5619/5620次)",
+      "description": "穿越大凉山，彝族风情，地质博物馆",
+      "color": "#FF5733",
+      "stations": [
+        {
+          "code": "CWZ",
+          "name": "峨眉",
+          "lat": 29.59,
+          "lng": 103.48,
+          "attractions": ["峨眉山", "报国寺"],
+          "rating": 4.8,
+          "stay_info": "市区酒店众多，人均100-200元",
+          "desc": "佛教名山起点"
+        },
+        {
+          "code": "EBW",
+          "name": "燕岗",
+          "lat": 29.53,
+          "lng": 103.55,
+          "attractions": ["沫若故居"],
+          "rating": 4.2,
+          "stay_info": "靠近沙湾区，住宿便宜",
+          "desc": "郭沫若故乡附近"
+        },
+        {
+          "code": "SPW",
+          "name": "沙湾南",
+          "lat": 29.45,
+          "lng": 103.58,
+          "attractions": ["大渡河峡谷"],
+          "rating": 4.5,
+          "stay_info": "无大型酒店，建议返回乐山",
+          "desc": "大渡河畔风光"
+        },
+        {
+          "code": "MTW",
+          "name": "金口河",
+          "lat": 29.28,
+          "lng": 103.08,
+          "attractions": ["金口大峡谷", "铁道兵博物馆"],
+          "rating": 4.9,
+          "stay_info": "城区有宾馆，人均80-150元",
+          "desc": "中国最美十大峡谷之一"
+        },
+        {
+          "code": "SCW",
+          "name": "甘洛",
+          "lat": 28.98,
+          "lng": 102.78,
+          "attractions": ["海棠古城"],
+          "rating": 4.0,
+          "stay_info": "县城招待所，人均50-80元",
+          "desc": "彝族聚居区入口"
+        },
+        {
+          "code": "XVW",
+          "name": "普雄",
+          "lat": 28.68,
+          "lng": 102.85,
+          "attractions": ["彝族村落"],
+          "rating": 4.3,
+          "stay_info": "镇上简陋住宿，建议体验当地民居",
+          "desc": "慢火车核心路段，赶集日热闹"
+        },
+        {
+          "code": "WPW",
+          "name": "越西",
+          "lat": 28.65,
+          "lng": 102.52,
+          "attractions": ["水观音"],
+          "rating": 4.4,
+          "stay_info": "县城酒店，人均100元左右",
+          "desc": "小相岭脚下"
+        },
+        {
+          "code": "YAW",
+          "name": "喜德",
+          "lat": 28.43,
+          "lng": 102.42,
+          "attractions": ["彝家新寨"],
+          "rating": 4.1,
+          "stay_info": "经济型旅馆",
+          "desc": "彝族文化发源地之一"
+        },
+        {
+          "code": "XW",
+          "name": "西昌",
+          "lat": 27.89,
+          "lng": 102.26,
+          "attractions": ["邛海", "泸山", "西昌卫星发射中心"],
+          "rating": 4.9,
+          "stay_info": "旅游城市，酒店选择多，人均150-300元",
+          "desc": "月城，终点站"
+        }
+      ]
+    },
+    {
+      "id": "route_2",
+      "name": "韶山慢火车 (5365/5366次)",
+      "description": "红色之旅，湘西山歌",
+      "color": "#C70039",
+      "stations": [
+        {
+          "code": "CSQ",
+          "name": "长沙",
+          "lat": 28.19,
+          "lng": 112.98,
+          "attractions": ["橘子洲", "岳麓山", "湖南省博"],
+          "rating": 4.9,
+          "stay_info": "五一广场附近繁华，人均200元+",
+          "desc": "湖南省会，美食之都"
+        },
+        {
+          "code": "SYQ",
+          "name": "韶山",
+          "lat": 27.91,
+          "lng": 112.49,
+          "attractions": ["毛泽东故居", "滴水洞"],
+          "rating": 5.0,
+          "stay_info": "景区附近民宿多，人均100-200元",
+          "desc": "伟人故里"
+        },
+        {
+          "code": "LDQ",
+          "name": "娄底",
+          "lat": 27.73,
+          "lng": 111.99,
+          "attractions": ["梅山龙宫"],
+          "rating": 4.3,
+          "stay_info": "市区酒店，人均120元",
+          "desc": "湘中枢纽"
+        },
+        {
+          "code": "SFQ",
+          "name": "邵阳",
+          "lat": 27.24,
+          "lng": 111.47,
+          "attractions": ["崀山"],
+          "rating": 4.6,
+          "stay_info": "市区住宿便利",
+          "desc": "宝庆府"
+        },
+        {
+          "code": "HYQ",
+          "name": "怀化",
+          "lat": 27.55,
+          "lng": 109.98,
+          "attractions": ["洪江古商城", "侗文化村"],
+          "rating": 4.5,
+          "stay_info": "火车站附近旅馆多，人均80-150元",
+          "desc": "湘西门户"
+        }
+      ]
+    },
+    {
+      "id": "route_3",
+      "name": "赣南慢火车 (K8709/K8710等)",
+      "description": "客家风情，红色摇篮",
+      "color": "#900C3F",
+      "stations": [
+        {
+          "code": "NCZ",
+          "name": "南昌",
+          "lat": 28.68,
+          "lng": 115.89,
+          "attractions": ["滕王阁", "八一广场"],
+          "rating": 4.7,
+          "stay_info": "红谷滩或老城区，人均150元+",
+          "desc": "英雄城"
+        },
+        {
+          "code": "JGZ",
+          "name": "吉安",
+          "lat": 27.11,
+          "lng": 114.98,
+          "attractions": ["井冈山", "白鹭洲书院"],
+          "rating": 4.8,
+          "stay_info": "市区酒店，去井冈山需转车",
+          "desc": "庐陵文化"
+        },
+        {
+          "code": "GZ",
+          "name": "赣州",
+          "lat": 25.85,
+          "lng": 114.93,
+          "attractions": ["古城墙", "通天岩", "阳明湖"],
+          "rating": 4.6,
+          "stay_info": "章贡区酒店多，人均120元",
+          "desc": "客家摇篮，宋城"
+        },
+        {
+          "code": "RYZ",
+          "name": "瑞金",
+          "lat": 25.88,
+          "lng": 116.03,
+          "attractions": ["共和国摇篮景区", "叶坪"],
+          "rating": 4.9,
+          "stay_info": "红色旅游城市，住宿方便",
+          "desc": "红色故都"
+        }
+      ]
+    },
+    {
+      "id": "route_4",
+      "name": "广铁管内慢火车 (83xx系列)",
+      "description": "粤北山区，丹霞地貌",
+      "color": "#28B463",
+      "stations": [
+        {
+          "code": "GZQ",
+          "name": "广州",
+          "lat": 23.12,
+          "lng": 113.26,
+          "attractions": ["广州塔", "长隆", "沙面"],
+          "rating": 4.8,
+          "stay_info": "极其丰富，从青旅到五星都有",
+          "desc": "羊城，出发地"
+        },
+        {
+          "code": "SGQ",
+          "name": "韶关东",
+          "lat": 24.80,
+          "lng": 113.59,
+          "attractions": ["丹霞山", "南华寺"],
+          "rating": 4.7,
+          "stay_info": "市区或丹霞山脚下，人均100-200元",
+          "desc": "世界自然遗产"
+        },
+        {
+          "code": "LCQ",
+          "name": "乐昌",
+          "lat": 25.13,
+          "lng": 113.35,
+          "attractions": ["金鸡岭", "九泷十八滩"],
+          "rating": 4.2,
+          "stay_info": "县城小旅馆",
+          "desc": "广东北大门"
+        },
+        {
+          "code": "PQ",
+          "name": "坪石",
+          "lat": 25.28,
+          "lng": 113.05,
+          "attractions": ["佛度山"],
+          "rating": 4.0,
+          "stay_info": "镇级住宿",
+          "desc": "三省交界"
+        }
+      ]
+    }
+  ],
+  "hubs": [
+    {
+      "name": "广州",
+      "code": "GZQ",
+      "lat": 23.12,
+      "lng": 113.26,
+      "connections": ["韶关东", "长沙", "南昌", "衡阳"]
+    },
+    {
+      "name": "惠州",
+      "code": "HZQ",
+      "lat": 23.11,
+      "lng": 114.41,
+      "connections": ["广州", "东莞东", "汕头", "赣州"]
+    }
+  ]
+}
