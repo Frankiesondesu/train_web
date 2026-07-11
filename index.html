@@ -3,312 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国南方公益慢火车旅游地图</title>
-    <!-- Leaflet CSS -->
+    <title>中国公益慢火车旅游地图</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body { margin: 0; padding: 0; font-family: 'Microsoft YaHei', sans-serif; }
         #map { height: 100vh; width: 100%; }
-        
-        /* 侧边栏样式 */
-        .sidebar {
+        #sidebar {
             position: absolute;
             top: 10px;
             left: 10px;
-            width: 320px;
-            max-height: 95vh;
-            background: white;
             z-index: 1000;
+            background: white;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-height: 90vh;
             overflow-y: auto;
+            width: 300px;
         }
-        .control-group { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .control-group h3 { margin-top: 0; font-size: 16px; color: #333; }
-        .route-item { display: flex; align-items: center; margin-bottom: 8px; cursor: pointer; }
-        .route-item input { margin-right: 10px; }
-        .color-box { width: 20px; height: 20px; border-radius: 3px; margin-right: 8px; display: inline-block; }
-        
-        /* 票价计算面板 */
-        .price-calc { background: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: 10px; }
-        .price-calc select { width: 100%; margin-bottom: 10px; padding: 5px; }
-        .price-result { font-weight: bold; color: #d32f2f; margin-top: 5px; }
-        
-        /* 弹窗样式 */
-        .station-popup h3 { margin: 0 0 5px 0; color: #2c3e50; }
-        .station-popup .rating { color: #f39c12; font-weight: bold; }
-        .station-popup ul { padding-left: 20px; margin: 5px 0; }
-        .station-popup .stay { font-size: 0.9em; color: #666; background: #eef; padding: 3px; border-radius: 3px; }
-        
-        /* 加载提示 */
-        #loading {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255,255,255,0.9); padding: 20px;
-            border-radius: 8px; z-index: 2000;
+        .route-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .route-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .route-name { font-size: 14px; }
+        h2 { margin-top: 0; font-size: 18px; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 350px;
             display: none;
         }
+        .info-title { font-weight: bold; font-size: 16px; margin-bottom: 10px; color: #333; }
+        .info-content { font-size: 13px; line-height: 1.6; }
+        .rating { color: #f39c12; }
+        .price-calculator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            width: 280px;
+        }
+        select { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 10px; font-size: 13px; }
+        .note { font-size: 12px; color: #e74c3c; margin-top: 5px; }
+        .legend { font-size: 12px; color: #666; margin-top: 10px; }
     </style>
 </head>
 <body>
-
-<div id="loading">正在加载数据...</div>
-
-<div class="sidebar">
-    <h2>🚂 南方公益慢火车</h2>
+    <div id="map"></div>
     
-    <div class="control-group">
-        <h3>路线显示控制</h3>
-        <div id="route-list">
-            <!-- 动态生成路线列表 -->
+    <div id="sidebar">
+        <h2>🚂 公益慢火车路线</h2>
+        <div id="route-list"></div>
+        <div class="legend">
+            <p>💡 提示：点击站点查看详细信息<br>✅ 勾选/取消勾选显示路线</p>
         </div>
     </div>
 
-    <div class="control-group">
-        <h3>💰 票价查询 (普速)</h3>
-        <div class="price-calc">
-            <label>出发站:</label>
-            <select id="from-station"><option value="">请选择</option></select>
-            <label>到达站:</label>
-            <select id="to-station"><option value="">请选择</option></select>
-            <button onclick="calculatePrice()" style="width:100%; padding:8px; background:#007bff; color:white; border:none; cursor:pointer;">查询票价</button>
-            <div id="price-output" class="price-result"></div>
-            <div style="font-size:12px; color:#666; margin-top:5px;">
-                * 数据来源于12306模拟接口<br>
-                * 实际价格以车站为准
-            </div>
-        </div>
+    <div class="price-calculator">
+        <h2>💰 票价查询</h2>
+        <select id="from-station"><option value="">选择起点站</option></select>
+        <select id="to-station"><option value="">选择终点站</option></select>
+        <button onclick="calculatePrice()">查询票价</button>
+        <div id="price-result" class="result"></div>
+        <div class="note">注：价格为硬座估算价（约0.058元/公里），实际价格以12306为准</div>
     </div>
 
-    <div class="control-group">
-        <h3>ℹ️ 使用说明</h3>
-        <p style="font-size:12px; color:#555;">
-            1. 勾选左侧复选框显示/隐藏对应慢火车路线。<br>
-            2. 点击地图上的站点图标查看详细信息。<br>
-            3. 使用上方工具查询任意两站间的普速列车参考票价。<br>
-            4. 红色虚线表示主要干线连接，方便规划跨线旅行。
-        </p>
+    <div id="info-panel" class="info-panel">
+        <div id="info-title" class="info-title"></div>
+        <div id="info-content" class="info-content"></div>
     </div>
-</div>
 
-<div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        let map;
+        let routeData = {};
+        let allStations = [];
+        let routeLayers = {};
+        let markers = {};
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    // 初始化地图
-    const map = L.map('map').setView([26.0, 113.0], 6); // 中心点设为中国南方
-
-    // 添加底图 (OpenStreetMap)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    let routesData = [];
-    let layerGroups = {};
-    let allStations = [];
-
-    // 1. 加载外部 JSON 数据
-    async function loadData() {
-        document.getElementById('loading').style.display = 'block';
-        try {
-            const response = await fetch('data.json');
-            if (!response.ok) throw new Error("无法加载 data.json");
-            routesData = await response.json();
-            initMapLayers();
-            populateStationSelects();
-        } catch (error) {
-            alert("加载数据失败：" + error.message);
-        } finally {
-            document.getElementById('loading').style.display = 'none';
+        // 初始化地图
+        function initMap() {
+            map = L.map('map').setView([35.86, 104.19], 4);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
         }
-    }
 
-    // 2. 初始化图层
-    function initMapLayers() {
-        const routeListDiv = document.getElementById('route-list');
-        
-        routesData.routes.forEach(route => {
-            // 创建图层组
-            const group = L.layerGroup().addTo(map);
-            layerGroups[route.id] = group;
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                routeData = await response.json();
+                populateStationSelects();
+                renderRoutes();
+                renderHubStations();
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                alert('加载路线数据失败，请检查 data.json 文件是否存在');
+            }
+        }
 
-            // 绘制路线连线
-            const latlngs = route.stations.map(s => [s.lat, s.lng]);
-            L.polyline(latlngs, { color: route.color, weight: 4, opacity: 0.8, dashArray: '10, 10' }).addTo(group);
-
-            // 添加站点标记
-            route.stations.forEach(station => {
-                allStations.push(station);
-                const marker = L.circleMarker([station.lat, station.lng], {
-                    radius: 8,
-                    fillColor: route.color,
-                    color: "#fff",
-                    weight: 2,
-                    opacity: 1,
-                    fillOpacity: 0.9
-                }).bindPopup(`
-                    <div class="station-popup">
-                        <h3>${station.name} (${station.code})</h3>
-                        <p class="rating">⭐ ${station.rating} / 5.0</p>
-                        <p>${station.desc}</p>
-                        <b>景点:</b>
-                        <ul>${station.attractions.map(a => `<li>${a}</li>`).join('')}</ul>
-                        <div class="stay">🏠 住宿: ${station.stay_info}</div>
-                    </div>
-                `);
-                marker.addTo(group);
+        // 填充站点选择框
+        function populateStationSelects() {
+            const fromSelect = document.getElementById('from-station');
+            const toSelect = document.getElementById('to-station');
+            
+            // 收集所有站点
+            routeData.routes.forEach(route => {
+                route.stations.forEach(station => {
+                    if (!allStations.find(s => s.code === station.code)) {
+                        allStations.push(station);
+                    }
+                });
+            });
+            
+            // 添加枢纽站
+            routeData.hub_stations.forEach(hub => {
+                if (!allStations.find(s => s.code === hub.code)) {
+                    allStations.push({...hub, isHub: true});
+                }
             });
 
-            // 创建控制面板项
-            const div = document.createElement('div');
-            div.className = 'route-item';
-            div.innerHTML = `
-                <input type="checkbox" id="${route.id}" checked onchange="toggleRoute('${route.id}')">
-                <span class="color-box" style="background:${route.color}"></span>
-                <label for="${route.id}">${route.name}</label>
-            `;
-            routeListDiv.appendChild(div);
-        });
-
-        // 绘制枢纽连接线 (模拟干线)
-        drawHubLines();
-    }
-
-    // 绘制枢纽之间的普通干线连接
-    function drawHubLines() {
-        routesData.hubs.forEach(hub => {
-            // 添加枢纽大圆点
-            L.circleMarker([hub.lat, hub.lng], {
-                radius: 12,
-                fillColor: "#333",
-                color: "#fff",
-                weight: 2,
-                fillOpacity: 1
-            }).bindPopup(`<b>交通枢纽：${hub.name}</b><br>可换乘前往：${hub.connections.join(', ')}`).addTo(map);
+            // 排序并填充
+            allStations.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
             
-            // 这里简单演示，实际应根据真实路网绘制
-            // 暂时不画具体的长线，避免地图过于杂乱，依靠慢火车路线展示
-        });
-    }
+            allStations.forEach(station => {
+                const option1 = document.createElement('option');
+                option1.value = station.code;
+                option1.textContent = station.name;
+                fromSelect.appendChild(option1);
 
-    // 切换路线显示
-    window.toggleRoute = function(id) {
-        if (layerGroups[id]) {
-            if (document.getElementById(id).checked) {
-                map.addLayer(layerGroups[id]);
-            } else {
-                map.removeLayer(layerGroups[id]);
-            }
-        }
-    };
-
-    // 填充下拉框
-    function populateStationSelects() {
-        const fromSel = document.getElementById('from-station');
-        const toSel = document.getElementById('to-station');
-        
-        // 去重
-        const uniqueStations = [];
-        const mapTemp = new Map();
-        for (const item of allStations) {
-            if(!mapTemp.has(item.code)){
-                mapTemp.set(item.code, true);
-                uniqueStations.push(item);
-            }
+                const option2 = document.createElement('option');
+                option2.value = station.code;
+                option2.textContent = station.name;
+                toSelect.appendChild(option2);
+            });
         }
 
-        uniqueStations.sort((a,b) => a.name.localeCompare(b.name));
+        // 渲染路线
+        function renderRoutes() {
+            const routeList = document.getElementById('route-list');
+            routeList.innerHTML = '';
 
-        uniqueStations.forEach(s => {
-            const opt1 = new Option(`${s.name} (${s.code})`, s.code);
-            const opt2 = new Option(`${s.name} (${s.code})`, s.code);
-            fromSel.add(opt1);
-            toSel.add(opt2);
-        });
-    }
-
-    // 3. 计算票价逻辑
-    window.calculatePrice = async function() {
-        const fromCode = document.getElementById('from-station').value;
-        const toCode = document.getElementById('to-station').value;
-        const output = document.getElementById('price-output');
-
-        if (!fromCode || !toCode) {
-            output.innerHTML = "请选择出发和到达站点";
-            return;
-        }
-        if (fromCode === toCode) {
-            output.innerHTML = "出发站和到达站不能相同";
-            return;
-        }
-
-        output.innerHTML = "正在查询 12306 数据...";
-
-        // 构造 12306 查询 URL
-        // 注意：直接前端调用 12306 可能会遇到 CORS 跨域问题。
-        // 在实际生产环境中，这需要一个后端代理。
-        // 这里为了演示功能，我们尝试直接访问，如果失败则显示模拟数据提示。
-        
-        const date = new Date();
-        date.setDate(date.getDate() + 1); // 明天
-        const dateStr = date.toISOString().split('T')[0];
-        
-        const url = `https://kyfw.12306.cn/otn/leftTicketPrice/queryAllPublicPrice?leftTicketDTO.train_date=${dateStr}&leftTicketDTO.from_station=${fromCode}&leftTicketDTO.to_station=${toCode}&purpose_codes=ADULT`;
-
-        try {
-            // 尝试 Fetch (大概率会被 CORS 拦截)
-            const resp = await fetch(url);
-            if (!resp.ok) throw new Error("Network response was not ok");
-            const data = await resp.json();
-            
-            if (data.data && data.data.price) {
-                // 解析真实数据逻辑 (需根据 12306 实际返回结构调整)
-                // 12306 返回结构复杂，此处简化处理
-                output.innerHTML = `查询成功 (实时数据)`; 
-            } else {
-                throw new Error("No price data");
-            }
-        } catch (e) {
-            console.warn("Direct 12306 access failed (CORS), using simulation logic.", e);
-            
-            // --- 模拟 fallback 逻辑 (因为浏览器直接调 12306 必挂) ---
-            // 在真实项目中，你需要一个 Python/Node.js 后端来请求 12306
-            // 这里为了让你看到效果，我根据距离估算一个硬座价格
-            const s1 = allStations.find(s => s.code === fromCode);
-            const s2 = allStations.find(s => s.code === toCode);
-            
-            if (s1 && s2) {
-                // 简单的球面距离公式估算公里数
-                const R = 6371; 
-                const dLat = (s2.lat - s1.lat) * Math.PI / 180;
-                const dLon = (s2.lng - s1.lng) * Math.PI / 180;
-                const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                          Math.cos(s1.lat * Math.PI / 180) * Math.cos(s2.lat * Math.PI / 180) *
-                          Math.sin(dLon/2) * Math.sin(dLon/2);
-                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-                const distance = R * c;
+            routeData.routes.forEach(route => {
+                // 创建侧边栏项
+                const item = document.createElement('div');
+                item.className = 'route-item';
+                item.innerHTML = '<div class="route-color" style="background: ' + route.color + '"></div><div class="route-name">' + route.name + '</div>';
                 
-                // 普速硬座大概 0.05-0.06 元/公里
-                const price = Math.round(distance * 0.058);
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = true;
+                checkbox.style.marginRight = '10px';
+                checkbox.onchange = function() { toggleRoute(route.id, checkbox.checked); };
                 
-                output.innerHTML = `
-                    <div style="color:#d32f2f">⚠️ 12306 接口存在跨域限制，以下为基于里程的估算价</div>
-                    <div>距离：约 ${Math.round(distance)} 公里</div>
-                    <div>硬座参考价：¥${price} 元</div>
-                    <div>硬卧参考价：¥${Math.round(price * 1.8)} 元</div>
-                    <a href="https://www.12306.cn" target="_blank" style="font-size:12px">点击前往 12306 官网购买</a>
-                `;
+                item.insertBefore(checkbox, item.firstChild);
+                routeList.appendChild(item);
+
+                // 绘制路线
+                const latlngs = route.stations.map(function(s) { return [s.lat, s.lng]; });
+                const polyline = L.polyline(latlngs, {
+                    color: route.color,
+                    weight: 4,
+                    opacity: 0.8
+                }).addTo(map);
+
+                // 添加路线标签
+                const midPoint = latlngs[Math.floor(latlngs.length / 2)];
+                L.marker(midPoint, {
+                    icon: L.divIcon({
+                        className: 'route-label',
+                        html: '<div style="background:' + route.color + ';color:white;padding:2px 6px;border-radius:4px;font-size:12px;font-weight:bold;">' + route.name.split(' ')[0] + '</div>',
+                        iconSize: [100, 20]
+                    })
+                }).addTo(map);
+
+                routeLayers[route.id] = polyline;
+
+                // 添加站点标记
+                route.stations.forEach(function(station) {
+                    if (!markers[station.code]) {
+                        const marker = L.circleMarker([station.lat, station.lng], {
+                            radius: 8,
+                            fillColor: route.color,
+                            color: '#fff',
+                            weight: 2,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        }).addTo(map);
+
+                        marker.on('click', function() { showStationInfo(station); });
+                        markers[station.code] = marker;
+                    }
+                });
+            });
+        }
+
+        // 渲染枢纽站
+        function renderHubStations() {
+            routeData.hub_stations.forEach(function(hub) {
+                if (!markers[hub.code]) {
+                    const marker = L.circleMarker([hub.lat, hub.lng], {
+                        radius: 10,
+                        fillColor: '#3498db',
+                        color: '#fff',
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.9
+                    }).addTo(map);
+
+                    marker.on('click', function() {
+                        const info = '<strong>' + hub.name + ' (枢纽站)</strong><br>经纬度：' + hub.lat + ', ' + hub.lng + '<br>可作为中转站连接多条慢火车路线';
+                        showCustomInfo(hub.name, info);
+                    });
+                    markers[hub.code] = marker;
+                }
+            });
+        }
+
+        // 切换路线显示
+        function toggleRoute(routeId, visible) {
+            if (visible) {
+                routeLayers[routeId].addTo(map);
             } else {
-                output.innerHTML = "未找到站点信息";
+                map.removeLayer(routeLayers[routeId]);
             }
         }
-    };
 
-    // 启动
-    loadData();
+        // 显示站点信息
+        function showStationInfo(station) {
+            const panel = document.getElementById('info-panel');
+            const title = document.getElementById('info-title');
+            const content = document.getElementById('info-content');
 
-</script>
+            title.textContent = station.name;
+            let stars = '';
+            for (let i = 0; i < Math.round(station.rating); i++) stars += '★';
+            for (let i = 0; i < 5 - Math.round(station.rating); i++) stars += '☆';
+            
+            content.innerHTML = '<p><strong>景点推荐:</strong><br>' + station.attractions.join(', ') + '</p>' +
+                '<p><strong>游客评分:</strong> <span class="rating">' + stars + '</span> (' + station.rating + '/5.0)</p>' +
+                '<p><strong>住宿攻略:</strong><br>' + station.accommodation + '</p>' +
+                '<p><strong>坐标:</strong> ' + station.lat.toFixed(2) + ', ' + station.lng.toFixed(2) + '</p>';
+
+            panel.style.display = 'block';
+            map.flyTo([station.lat, station.lng], 10);
+        }
+
+        // 显示自定义信息
+        function showCustomInfo(title, content) {
+            const panel = document.getElementById('info-panel');
+            document.getElementById('info-title').textContent = title;
+            document.getElementById('info-content').innerHTML = content;
+            panel.style.display = 'block';
+        }
+
+        // 计算距离（Haversine公式）
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLng/2) * Math.sin(dLng/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        // 计算票价
+        function calculatePrice() {
+            const fromCode = document.getElementById('from-station').value;
+            const toCode = document.getElementById('to-station').value;
+            const resultDiv = document.getElementById('price-result');
+
+            if (!fromCode || !toCode) {
+                resultDiv.innerHTML = '<span style="color:red">请选择起点和终点站</span>';
+                return;
+            }
+
+            if (fromCode === toCode) {
+                resultDiv.innerHTML = '<span style="color:red">起点和终点不能相同</span>';
+                return;
+            }
+
+            const fromStation = allStations.find(function(s) { return s.code === fromCode; });
+            const toStation = allStations.find(function(s) { return s.code === toCode; });
+
+            if (!fromStation || !toStation) {
+                resultDiv.innerHTML = '<span style="color:red">站点信息不存在</span>';
+                return;
+            }
+
+            const distance = calculateDistance(fromStation.lat, fromStation.lng, toStation.lat, toStation.lng);
+            const railDistance = Math.round(distance * 1.3);
+            const railPrice = Math.round(railDistance * 0.058);
+
+            resultDiv.innerHTML = '<strong>' + fromStation.name + ' → ' + toStation.name + '</strong><br>' +
+                '直线距离：' + distance.toFixed(0) + ' km<br>' +
+                '估算铁路里程：' + railDistance + ' km<br>' +
+                '<strong>估算硬座票价：¥' + railPrice + '</strong><br>' +
+                '<span style="color:#666;font-size:11px">*实际票价可能因线路绕行、车型不同而有差异</span>';
+        }
+
+        // 初始化
+        initMap();
+        loadData();
+    </script>
 </body>
 </html>

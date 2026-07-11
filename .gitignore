@@ -1,5 +1,1 @@
-```
-# Logs and temp files
-*.log
-server.log
-```
+(data.json and index.html are source/config files, no build artifacts, dependencies, or temp files in the changes)

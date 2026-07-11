@@ -3,105 +3,51 @@
     {
       "id": "route_1",
       "name": "成昆铁路慢火车 (5619/5620次)",
-      "description": "穿越大凉山，彝族风情，地质博物馆",
+      "description": "穿越大凉山腹地的公益慢火车，连接峨眉与普雄，是彝族同胞的求学路、致富路。",
       "color": "#FF5733",
       "stations": [
         {
-          "code": "CWZ",
+          "code": "EMW",
           "name": "峨眉",
           "lat": 29.59,
           "lng": 103.48,
-          "attractions": ["峨眉山", "报国寺"],
+          "attractions": ["峨眉山风景区", "乐山大佛", "报国寺"],
           "rating": 4.8,
-          "stay_info": "市区酒店众多，人均100-200元",
-          "desc": "佛教名山起点"
+          "accommodation": "峨眉山市区有大量酒店，人均100-300元；山脚有农家乐，人均50-100元。"
         },
         {
-          "code": "EBW",
-          "name": "燕岗",
-          "lat": 29.53,
-          "lng": 103.55,
-          "attractions": ["沫若故居"],
-          "rating": 4.2,
-          "stay_info": "靠近沙湾区，住宿便宜",
-          "desc": "郭沫若故乡附近"
-        },
-        {
-          "code": "SPW",
-          "name": "沙湾南",
-          "lat": 29.45,
-          "lng": 103.58,
-          "attractions": ["大渡河峡谷"],
-          "rating": 4.5,
-          "stay_info": "无大型酒店，建议返回乐山",
-          "desc": "大渡河畔风光"
-        },
-        {
-          "code": "MTW",
+          "code": "JTW",
           "name": "金口河",
-          "lat": 29.28,
+          "lat": 29.25,
           "lng": 103.08,
-          "attractions": ["金口大峡谷", "铁道兵博物馆"],
-          "rating": 4.9,
-          "stay_info": "城区有宾馆，人均80-150元",
-          "desc": "中国最美十大峡谷之一"
+          "attractions": ["大峡谷", "铁道兵博物馆", "白熊沟"],
+          "rating": 4.5,
+          "accommodation": "金口河区宾馆较少，建议住乐山或峨眉，区内招待所人均50元左右。"
         },
         {
-          "code": "SCW",
-          "name": "甘洛",
-          "lat": 28.98,
-          "lng": 102.78,
-          "attractions": ["海棠古城"],
-          "rating": 4.0,
-          "stay_info": "县城招待所，人均50-80元",
-          "desc": "彝族聚居区入口"
-        },
-        {
-          "code": "XVW",
+          "code": "PUX",
           "name": "普雄",
-          "lat": 28.68,
-          "lng": 102.85,
-          "attractions": ["彝族村落"],
-          "rating": 4.3,
-          "stay_info": "镇上简陋住宿，建议体验当地民居",
-          "desc": "慢火车核心路段，赶集日热闹"
-        },
-        {
-          "code": "WPW",
-          "name": "越西",
-          "lat": 28.65,
-          "lng": 102.52,
-          "attractions": ["水观音"],
-          "rating": 4.4,
-          "stay_info": "县城酒店，人均100元左右",
-          "desc": "小相岭脚下"
-        },
-        {
-          "code": "YAW",
-          "name": "喜德",
-          "lat": 28.43,
+          "lat": 28.28,
           "lng": 102.42,
-          "attractions": ["彝家新寨"],
-          "rating": 4.1,
-          "stay_info": "经济型旅馆",
-          "desc": "彝族文化发源地之一"
+          "attractions": ["彝族文化体验", "周边村寨赶集"],
+          "rating": 4.0,
+          "accommodation": "普雄镇有简单旅馆，条件一般，人均30-60元。建议体验彝族家访。"
         },
         {
-          "code": "XW",
+          "code": "XCW",
           "name": "西昌",
           "lat": 27.89,
           "lng": 102.26,
-          "attractions": ["邛海", "泸山", "西昌卫星发射中心"],
-          "rating": 4.9,
-          "stay_info": "旅游城市，酒店选择多，人均150-300元",
-          "desc": "月城，终点站"
+          "attractions": ["邛海", "泸山", "西昌卫星发射中心", "火把广场"],
+          "rating": 4.7,
+          "accommodation": "西昌市区酒店选择多，邛海边民宿人均150-400元，市区快捷酒店人均100-200元。"
         }
       ]
     },
     {
       "id": "route_2",
       "name": "韶山慢火车 (5365/5366次)",
-      "description": "红色之旅，湘西山歌",
+      "description": "红色旅游专线，连接长沙与怀化，途经韶山，感受伟人故里与湘西风情。",
       "color": "#C70039",
       "stations": [
         {
@@ -109,164 +55,377 @@
           "name": "长沙",
           "lat": 28.19,
           "lng": 112.98,
-          "attractions": ["橘子洲", "岳麓山", "湖南省博"],
-          "rating": 4.9,
-          "stay_info": "五一广场附近繁华，人均200元+",
-          "desc": "湖南省会，美食之都"
+          "attractions": ["岳麓山", "橘子洲头", "湖南省博物馆", "太平老街"],
+          "rating": 4.8,
+          "accommodation": "五一广场附近酒店密集，人均150-400元；大学城附近青旅人均50-80元。"
         },
         {
-          "code": "SYQ",
+          "code": "SSG",
           "name": "韶山",
           "lat": 27.91,
           "lng": 112.49,
-          "attractions": ["毛泽东故居", "滴水洞"],
-          "rating": 5.0,
-          "stay_info": "景区附近民宿多，人均100-200元",
-          "desc": "伟人故里"
+          "attractions": ["毛泽东故居", "滴水洞", "铜像广场", "纪念馆"],
+          "rating": 4.9,
+          "accommodation": "韶山景区周边农家乐众多，人均80-150元，含早晚餐。"
         },
         {
           "code": "LDQ",
           "name": "娄底",
           "lat": 27.73,
           "lng": 111.99,
-          "attractions": ["梅山龙宫"],
-          "rating": 4.3,
-          "stay_info": "市区酒店，人均120元",
-          "desc": "湘中枢纽"
+          "attractions": ["梅山龙宫", "紫鹊界梯田（需转车）"],
+          "rating": 4.2,
+          "accommodation": "娄底市区快捷酒店人均100-200元。"
         },
         {
-          "code": "SFQ",
-          "name": "邵阳",
-          "lat": 27.24,
-          "lng": 111.47,
-          "attractions": ["崀山"],
-          "rating": 4.6,
-          "stay_info": "市区住宿便利",
-          "desc": "宝庆府"
-        },
-        {
-          "code": "HYQ",
+          "code": "HHQ",
           "name": "怀化",
           "lat": 27.55,
           "lng": 109.98,
-          "attractions": ["洪江古商城", "侗文化村"],
-          "rating": 4.5,
-          "stay_info": "火车站附近旅馆多，人均80-150元",
-          "desc": "湘西门户"
+          "attractions": ["洪江古商城", "侗文化城", "通道万佛山"],
+          "rating": 4.3,
+          "accommodation": "怀化市区酒店人均100-250元，近高铁站区域较新。"
         }
       ]
     },
     {
       "id": "route_3",
       "name": "赣南慢火车 (K8709/K8710等)",
-      "description": "客家风情，红色摇篮",
-      "color": "#900C3F",
+      "description": "穿行于客家大本营，连接南昌与赣州、瑞金，探访红色摇篮与客家围屋。",
+      "color": "#FFC300",
       "stations": [
         {
-          "code": "NCZ",
+          "code": "NCG",
           "name": "南昌",
           "lat": 28.68,
           "lng": 115.89,
-          "attractions": ["滕王阁", "八一广场"],
-          "rating": 4.7,
-          "stay_info": "红谷滩或老城区，人均150元+",
-          "desc": "英雄城"
+          "attractions": ["滕王阁", "八一广场", "海昏侯墓", "秋水广场"],
+          "rating": 4.6,
+          "accommodation": "红谷滩新区酒店较新，人均200-400元；老城区人均100-200元。"
         },
         {
-          "code": "JGZ",
+          "code": "JAG",
           "name": "吉安",
           "lat": 27.11,
           "lng": 114.98,
-          "attractions": ["井冈山", "白鹭洲书院"],
-          "rating": 4.8,
-          "stay_info": "市区酒店，去井冈山需转车",
-          "desc": "庐陵文化"
+          "attractions": ["井冈山（需转车）", "白鹭洲书院", "钓源古村"],
+          "rating": 4.4,
+          "accommodation": "吉安市区人均100-200元，井冈山茨坪镇旺季需提前预订，人均200-500元。"
         },
         {
-          "code": "GZ",
+          "code": "IZG",
           "name": "赣州",
           "lat": 25.85,
           "lng": 114.93,
-          "attractions": ["古城墙", "通天岩", "阳明湖"],
-          "rating": 4.6,
-          "stay_info": "章贡区酒店多，人均120元",
-          "desc": "客家摇篮，宋城"
+          "attractions": ["古城墙", "八境台", "客家文化城", "通天岩"],
+          "rating": 4.5,
+          "accommodation": "章贡区老城区特色民宿人均150-300元，新区酒店人均100-200元。"
         },
         {
-          "code": "RYZ",
+          "code": "RIG",
           "name": "瑞金",
           "lat": 25.88,
-          "lng": 116.03,
-          "attractions": ["共和国摇篮景区", "叶坪"],
-          "rating": 4.9,
-          "stay_info": "红色旅游城市，住宿方便",
-          "desc": "红色故都"
+          "lng": 116.02,
+          "attractions": ["共和国摇篮景区", "叶坪革命旧址", "红井"],
+          "rating": 4.7,
+          "accommodation": "瑞金市区酒店人均100-200元，景区附近有农家乐。"
         }
       ]
     },
     {
       "id": "route_4",
       "name": "广铁管内慢火车 (83xx系列)",
-      "description": "粤北山区，丹霞地貌",
-      "color": "#28B463",
+      "description": "粤北山区线，从广州出发，经韶关、乐昌，欣赏丹霞地貌与南岭风光。",
+      "color": "#33FF57",
       "stations": [
         {
           "code": "GZQ",
           "name": "广州",
-          "lat": 23.12,
+          "lat": 23.13,
           "lng": 113.26,
-          "attractions": ["广州塔", "长隆", "沙面"],
-          "rating": 4.8,
-          "stay_info": "极其丰富，从青旅到五星都有",
-          "desc": "羊城，出发地"
+          "attractions": ["广州塔", "长隆旅游度假区", "沙面", "陈家祠"],
+          "rating": 4.7,
+          "accommodation": "天河区/越秀区酒店选择极多，人均200-600元；火车站附近经济型人均100-200元。"
         },
         {
           "code": "SGQ",
-          "name": "韶关东",
-          "lat": 24.80,
+          "name": "韶关",
+          "lat": 24.81,
           "lng": 113.59,
-          "attractions": ["丹霞山", "南华寺"],
-          "rating": 4.7,
-          "stay_info": "市区或丹霞山脚下，人均100-200元",
-          "desc": "世界自然遗产"
+          "attractions": ["丹霞山", "南华寺", "乳源大峡谷", "珠玑巷"],
+          "rating": 4.6,
+          "accommodation": "丹霞山脚下民宿集群，人均150-400元；韶关市区人均100-200元。"
         },
         {
           "code": "LCQ",
           "name": "乐昌",
           "lat": 25.13,
           "lng": 113.35,
-          "attractions": ["金鸡岭", "九泷十八滩"],
-          "rating": 4.2,
-          "stay_info": "县城小旅馆",
-          "desc": "广东北大门"
+          "attractions": ["金鸡岭", "九峰山（春季赏花）", "古佛洞天"],
+          "rating": 4.1,
+          "accommodation": "乐昌市区宾馆人均80-150元，九峰镇有农家乐。"
         },
         {
-          "code": "PQ",
+          "code": "BPQ",
           "name": "坪石",
           "lat": 25.28,
           "lng": 113.05,
-          "attractions": ["佛度山"],
+          "attractions": ["金鸡岭风景区", "武江漂流"],
+          "rating": 3.9,
+          "accommodation": "坪石镇住宿条件一般，人均50-100元。"
+        }
+      ]
+    },
+    {
+      "id": "route_5",
+      "name": "川渝慢火车 (5635/5636次)",
+      "description": "连接四川宜宾与贵州昭通，穿越乌蒙山区，体验云贵川交界风情。",
+      "color": "#3357FF",
+      "stations": [
+        {
+          "code": "YBW",
+          "name": "宜宾",
+          "lat": 28.76,
+          "lng": 104.64,
+          "attractions": ["蜀南竹海", "李庄古镇", "五粮液酒厂", "兴文石海"],
+          "rating": 4.6,
+          "accommodation": "宜宾市区人均150-300元，李庄古镇民宿人均100-200元。"
+        },
+        {
+          "code": "ZWV",
+          "name": "水富",
+          "lat": 28.63,
+          "lng": 104.42,
+          "attractions": ["西部大峡谷温泉", "向家坝电站"],
+          "rating": 4.2,
+          "accommodation": "水富市区温泉酒店较多，人均200-500元，也有经济型宾馆人均100元左右。"
+        },
+        {
+          "code": "YTZ",
+          "name": "盐津",
+          "lat": 28.11,
+          "lng": 104.24,
+          "attractions": ["豆沙关古镇", "千年悬棺", "五尺道"],
+          "rating": 4.3,
+          "accommodation": "盐津县城沿河而建，宾馆人均80-150元。"
+        },
+        {
+          "code": "WEZ",
+          "name": "威信",
+          "lat": 27.44,
+          "lng": 105.18,
+          "attractions": ["扎西会议纪念馆", "天台山溶洞"],
           "rating": 4.0,
-          "stay_info": "镇级住宿",
-          "desc": "三省交界"
+          "accommodation": "威信县城人均80-150元。"
+        }
+      ]
+    },
+    {
+      "id": "route_6",
+      "name": "黔桂慢火车 (5639/5640次)",
+      "description": "贵阳至玉屏，穿越黔东南苗族侗族自治州，体验浓郁的少数民族风情。",
+      "color": "#FF33A1",
+      "stations": [
+        {
+          "code": "GIW",
+          "name": "贵阳",
+          "lat": 26.65,
+          "lng": 106.63,
+          "attractions": ["甲秀楼", "青岩古镇", "黔灵山公园", "花溪夜郎谷"],
+          "rating": 4.6,
+          "accommodation": "喷水池/大十字附近人均150-300元，观山湖区较新但远，人均200-400元。"
+        },
+        {
+          "code": "KOW",
+          "name": "凯里",
+          "lat": 26.58,
+          "lng": 107.98,
+          "attractions": ["西江千户苗寨（需转车）", "郎德上寨", "下司古镇"],
+          "rating": 4.7,
+          "accommodation": "凯里市区人均100-200元，西江苗寨内民宿人均150-500元（旺季溢价高）。"
+        },
+        {
+          "code": "RYW",
+          "name": "榕江",
+          "lat": 25.93,
+          "lng": 108.52,
+          "attractions": ["三宝侗寨", "大利侗寨", "月亮山"],
+          "rating": 4.4,
+          "accommodation": "榕江县城人均80-150元，侗寨内多为农家客栈，人均50-100元。"
+        },
+        {
+          "code": "YBZ",
+          "name": "玉屏",
+          "lat": 27.24,
+          "lng": 108.91,
+          "attractions": ["侗乡箫笛博物馆", "舞阳河风景区（需转车）"],
+          "rating": 4.1,
+          "accommodation": "玉屏县城人均100-180元。"
+        }
+      ]
+    },
+    {
+      "id": "route_7",
+      "name": "云南慢火车 (7465/7466次)",
+      "description": "昆明至河口，穿越热带雨林，通往中越边境，体验异域风情。",
+      "color": "#A133FF",
+      "stations": [
+        {
+          "code": "KNM",
+          "name": "昆明",
+          "lat": 25.04,
+          "lng": 102.71,
+          "attractions": ["石林", "滇池", "翠湖公园", "斗南花市"],
+          "rating": 4.7,
+          "accommodation": "翠湖/南屏街附近人均200-500元，呈贡区较便宜人均100-200元。"
+        },
+        {
+          "code": "YXM",
+          "name": "玉溪",
+          "lat": 24.35,
+          "lng": 102.54,
+          "attractions": ["抚仙湖", "哀牢山", "聂耳音乐广场"],
+          "rating": 4.5,
+          "accommodation": "抚仙湖边度假酒店人均300-800元，玉溪市区人均100-200元。"
+        },
+        {
+          "code": "HOM",
+          "name": "河口",
+          "lat": 22.51,
+          "lng": 103.96,
+          "attractions": ["中越铁路大桥", "法式建筑群", "热带水果市场"],
+          "rating": 4.3,
+          "accommodation": "河口口岸附近酒店人均150-300元，可体验越南风味餐饮。"
+        }
+      ]
+    },
+    {
+      "id": "route_8",
+      "name": "皖赣慢火车 (8467/8468/8470次)",
+      "description": "黄山至景德镇至南昌，串联皖南古村落与瓷都，人文景观丰富。",
+      "color": "#33FFF5",
+      "stations": [
+        {
+          "code": "HKH",
+          "name": "黄山",
+          "lat": 29.71,
+          "lng": 118.33,
+          "attractions": ["黄山风景区", "宏村", "西递", "屯溪老街"],
+          "rating": 4.9,
+          "accommodation": "汤口镇（黄山脚下）酒店密集，人均150-400元；宏村内民宿人均200-600元。"
+        },
+        {
+          "code": "JDG",
+          "name": "景德镇",
+          "lat": 29.29,
+          "lng": 117.21,
+          "attractions": ["古窑民俗博览区", "陶溪川文创街区", "瑶里古镇"],
+          "rating": 4.6,
+          "accommodation": "人民广场附近人均150-300元，陶溪川附近特色民宿人均200-500元。"
+        },
+        {
+          "code": "NCG",
+          "name": "南昌",
+          "lat": 28.68,
+          "lng": 115.89,
+          "attractions": ["滕王阁", "八一广场", "海昏侯墓"],
+          "rating": 4.6,
+          "accommodation": "见路线3。"
+        }
+      ]
+    },
+    {
+      "id": "route_9",
+      "name": "东北林都慢火车 (4041/4042次)",
+      "description": "哈尔滨至伊春，穿越小兴安岭，夏季避暑冬季赏雪，森林氧吧之旅。",
+      "color": "#8E44AD",
+      "stations": [
+        {
+          "code": "HBB",
+          "name": "哈尔滨",
+          "lat": 45.76,
+          "lng": 126.63,
+          "attractions": ["中央大街", "索菲亚教堂", "冰雪大世界", "太阳岛"],
+          "rating": 4.8,
+          "accommodation": "中央大街附近旺季（冰雪节）价格高，人均300-800元；淡季人均150-300元。"
+        },
+        {
+          "code": "HLS",
+          "name": "海伦",
+          "lat": 47.46,
+          "lng": 126.96,
+          "attractions": ["东方红水库", "雷炎公园"],
+          "rating": 3.8,
+          "accommodation": "海伦市区人均80-150元。"
+        },
+        {
+          "code": "YCB",
+          "name": "伊春",
+          "lat": 47.72,
+          "lng": 128.89,
+          "attractions": ["五营国家森林公园", "汤旺河石林", "溪水公园"],
+          "rating": 4.7,
+          "accommodation": "伊春市区及景区周边木屋别墅较多，人均200-600元。"
+        }
+      ]
+    },
+    {
+      "id": "route_10",
+      "name": "新疆南疆慢火车 (7556/7557次)",
+      "description": "乌鲁木齐至和田，穿越塔克拉玛干沙漠边缘，体验南疆维吾尔族风情。",
+      "color": "#D35400",
+      "stations": [
+        {
+          "code": "WAR",
+          "name": "乌鲁木齐",
+          "lat": 43.82,
+          "lng": 87.61,
+          "attractions": ["天山天池", "国际大巴扎", "红山公园", "博物馆"],
+          "rating": 4.7,
+          "accommodation": "大巴扎附近人均200-500元，市区连锁酒店人均150-300元。"
+        },
+        {
+          "code": "KER",
+          "name": "库尔勒",
+          "lat": 41.76,
+          "lng": 86.14,
+          "attractions": ["博斯腾湖", "罗布人村寨", "孔雀河"],
+          "rating": 4.5,
+          "accommodation": "库尔勒市区人均150-300元。"
+        },
+        {
+          "code": "AKR",
+          "name": "阿克苏",
+          "lat": 41.16,
+          "lng": 80.26,
+          "attractions": ["温宿大峡谷", "克孜尔千佛洞（需转车）"],
+          "rating": 4.4,
+          "accommodation": "阿克苏市区人均150-250元。"
+        },
+        {
+          "code": "HOR",
+          "name": "和田",
+          "lat": 37.11,
+          "lng": 79.92,
+          "attractions": ["和田夜市", "玉龙喀什河（捡玉）", "艾提卡清真寺"],
+          "rating": 4.6,
+          "accommodation": "和田市区人均150-300元，夜市附近热闹。"
         }
       ]
     }
   ],
-  "hubs": [
-    {
-      "name": "广州",
-      "code": "GZQ",
-      "lat": 23.12,
-      "lng": 113.26,
-      "connections": ["韶关东", "长沙", "南昌", "衡阳"]
-    },
-    {
-      "name": "惠州",
-      "code": "HZQ",
-      "lat": 23.11,
-      "lng": 114.41,
-      "connections": ["广州", "东莞东", "汕头", "赣州"]
-    }
+  "hub_stations": [
+    {"code": "HZQ", "name": "惠州", "lat": 23.09, "lng": 114.40},
+    {"code": "GZQ", "name": "广州", "lat": 23.13, "lng": 113.26},
+    {"code": "SZQ", "name": "深圳", "lat": 22.54, "lng": 114.06},
+    {"code": "CSQ", "name": "长沙", "lat": 28.19, "lng": 112.98},
+    {"code": "NCG", "name": "南昌", "lat": 28.68, "lng": 115.89},
+    {"code": "IZG", "name": "赣州", "lat": 25.85, "lng": 114.93},
+    {"code": "NNZ", "name": "南宁", "lat": 22.82, "lng": 108.32},
+    {"code": "GYW", "name": "贵阳", "lat": 26.65, "lng": 106.63},
+    {"code": "CNW", "name": "成都", "lat": 30.67, "lng": 104.06},
+    {"code": "CQW", "name": "重庆", "lat": 29.56, "lng": 106.55},
+    {"code": "KNM", "name": "昆明", "lat": 25.04, "lng": 102.71},
+    {"code": "WHN", "name": "武汉", "lat": 30.59, "lng": 114.30}
   ]
 }
