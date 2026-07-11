@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "description": "中国南方公益慢火车及普速线路数据",
+    "currency": "CNY",
+    "base_date": "2024-07-17"
+  },
+  "routes": [
+    {
+      "id": "slow_5629",
+      "name": "5629/5630 次 (重庆 - 遵义)",
+      "region": "西南",
+      "color": "#FF5733",
+      "stations": [
+        {"code": "CQW", "name": "重庆西", "lat": 29.52, "lng": 106.49, "attractions": ["磁器口", "洪崖洞"], "rating": 4.8, "stay_info": "解放碑附近，约 150 元/晚", "desc": "山城起点"},
+        {"code": "QJZ", "name": "綦江", "lat": 29.03, "lng": 106.65, "attractions": ["古剑山", "东溪古镇"], "rating": 4.2, "stay_info": "县城酒店，约 100 元/晚", "desc": "红色文化之地"},
+        {"code": "ZYZ", "name": "遵义", "lat": 27.73, "lng": 106.93, "attractions": ["遵义会议会址", "赤水丹霞"], "rating": 4.7, "stay_info": "老城步行街，约 120 元/晚", "desc": "转折之城"}
+      ]
+    },
+    {
+      "id": "slow_5633",
+      "name": "5633/5634 次 (攀枝花 - 普雄)",
+      "region": "西南",
+      "color": "#33FF57",
+      "stations": [
+        {"code": "PMZ", "name": "攀枝花", "lat": 26.58, "lng": 101.72, "attractions": ["二滩水电站"], "rating": 4.3, "stay_info": "炳草岗大街，约 130 元/晚", "desc": "阳光花城"},
+        {"code": "PUX", "name": "普雄", "lat": 28.28, "lng": 102.82, "attractions": ["彝族风情"], "rating": 4.0, "stay_info": "镇上旅馆，约 60 元/晚", "desc": "大凉山腹地"}
+      ]
+    },
+    {
+      "id": "slow_7272",
+      "name": "7272/7273 次 (株洲 - 怀化)",
+      "region": "华中",
+      "color": "#3357FF",
+      "stations": [
+        {"code": "ZZQ", "name": "株洲", "lat": 27.83, "lng": 113.13, "attractions": ["神农谷", "炎帝陵"], "rating": 4.1, "stay_info": "中心广场，约 110 元/晚", "desc": "火车拉来的城市"},
+        {"code": "HHQ", "name": "怀化", "lat": 27.55, "lng": 109.98, "attractions": ["洪江古商城", "侗文化村"], "rating": 4.4, "stay_info": "火车站附近，约 100 元/晚", "desc": "黔滇门户"}
+      ]
+    },
+    {
+      "id": "slow_8361",
+      "name": "8361/8362 次 (昆明 - 红果)",
+      "region": "西南",
+      "color": "#F333FF",
+      "stations": [
+        {"code": "KMM", "name": "昆明", "lat": 25.04, "lng": 102.71, "attractions": ["滇池", "石林"], "rating": 4.9, "stay_info": "金马碧鸡坊，约 150 元/晚", "desc": "春城"},
+        {"code": "HEM", "name": "红果", "lat": 25.80, "lng": 104.47, "attractions": ["盘州银杏"], "rating": 4.2, "stay_info": "红果街道，约 80 元/晚", "desc": "煤都"}
+      ]
+    },
+    {
+      "id": "slow_5619",
+      "name": "5619/5620 次 (峨眉 - 普雄)",
+      "region": "西南",
+      "color": "#FF9933",
+      "stations": [
+        {"code": "EMW", "name": "峨眉", "lat": 29.59, "lng": 103.48, "attractions": ["峨眉山", "乐山大佛"], "rating": 4.8, "stay_info": "市区，100-300 元", "desc": "佛教名山"},
+        {"code": "JTW", "name": "金口河", "lat": 29.25, "lng": 103.08, "attractions": ["大峡谷"], "rating": 4.5, "stay_info": "招待所，约 50 元", "desc": "峡谷风光"},
+        {"code": "PUX", "name": "普雄", "lat": 28.28, "lng": 102.42, "attractions": ["彝族文化"], "rating": 4.0, "stay_info": "简单旅馆，30-60 元", "desc": "大凉山"}
+      ]
+    },
+    {
+      "id": "slow_5365",
+      "name": "5365/5366 次 (长沙 - 怀化)",
+      "region": "华中",
+      "color": "#C70039",
+      "stations": [
+        {"code": "CSQ", "name": "长沙", "lat": 28.19, "lng": 112.98, "attractions": ["岳麓山", "橘子洲"], "rating": 4.8, "stay_info": "五一广场，150-400 元", "desc": "星城"},
+        {"code": "SSG", "name": "韶山", "lat": 27.91, "lng": 112.49, "attractions": ["毛泽东故居"], "rating": 4.9, "stay_info": "农家乐，80-150 元", "desc": "伟人故里"},
+        {"code": "LDQ", "name": "娄底", "lat": 27.73, "lng": 111.99, "attractions": ["梅山龙宫"], "rating": 4.2, "stay_info": "快捷酒店，100-200 元", "desc": "湘中明珠"},
+        {"code": "HHQ", "name": "怀化", "lat": 27.55, "lng": 109.98, "attractions": ["洪江古商城"], "rating": 4.3, "stay_info": "市区，100-250 元", "desc": "黔滇门户"}
+      ]
+    },
+    {
+      "id": "slow_gzsg",
+      "name": "广铁管内慢火车 (广州 - 韶关)",
+      "region": "华南",
+      "color": "#33FF57",
+      "stations": [
+        {"code": "GZQ", "name": "广州", "lat": 23.13, "lng": 113.26, "attractions": ["广州塔", "沙面"], "rating": 4.7, "stay_info": "天河/越秀，200-600 元", "desc": "羊城"},
+        {"code": "SGQ", "name": "韶关", "lat": 24.81, "lng": 113.59, "attractions": ["丹霞山", "南华寺"], "rating": 4.6, "stay_info": "丹霞山民宿，150-400 元", "desc": "丹霞之乡"},
+        {"code": "LCQ", "name": "乐昌", "lat": 25.13, "lng": 113.35, "attractions": ["金鸡岭"], "rating": 4.1, "stay_info": "市区，80-150 元", "desc": "粤北山城"}
+      ]
+    },
+    {
+      "id": "slow_gn",
+      "name": "赣南慢火车 (南昌 - 瑞金)",
+      "region": "华东",
+      "color": "#FFC300",
+      "stations": [
+        {"code": "NCG", "name": "南昌", "lat": 28.68, "lng": 115.89, "attractions": ["滕王阁", "八一广场"], "rating": 4.6, "stay_info": "红谷滩，200-400 元", "desc": "英雄城"},
+        {"code": "JAG", "name": "吉安", "lat": 27.11, "lng": 114.98, "attractions": ["井冈山"], "rating": 4.4, "stay_info": "市区，100-200 元", "desc": "革命摇篮"},
+        {"code": "IZG", "name": "赣州", "lat": 25.85, "lng": 114.93, "attractions": ["古城墙", "客家文化城"], "rating": 4.5, "stay_info": "章贡区，150-300 元", "desc": "客家大本营"},
+        {"code": "RIG", "name": "瑞金", "lat": 25.88, "lng": 116.02, "attractions": ["共和国摇篮", "红井"], "rating": 4.7, "stay_info": "市区，100-200 元", "desc": "红色故都"}
+      ]
+    },
+    {
+      "id": "slow_qg",
+      "name": "黔桂慢火车 (贵阳 - 玉屏)",
+      "region": "西南",
+      "color": "#FF33A1",
+      "stations": [
+        {"code": "GIW", "name": "贵阳", "lat": 26.65, "lng": 106.63, "attractions": ["甲秀楼", "青岩古镇"], "rating": 4.6, "stay_info": "喷水池，150-300 元", "desc": "林城"},
+        {"code": "KOW", "name": "凯里", "lat": 26.58, "lng": 107.98, "attractions": ["西江千户苗寨"], "rating": 4.7, "stay_info": "市区 100-200 元", "desc": "苗乡侗寨"},
+        {"code": "RYW", "name": "榕江", "lat": 25.93, "lng": 108.52, "attractions": ["三宝侗寨"], "rating": 4.4, "stay_info": "县城，80-150 元", "desc": "侗乡"},
+        {"code": "YBZ", "name": "玉屏", "lat": 27.24, "lng": 108.91, "attractions": ["箫笛博物馆"], "rating": 4.1, "stay_info": "县城，100-180 元", "desc": "箫笛之乡"}
+      ]
+    }
+  ],
+  "hub_stations": [
+    {"code": "HZQ", "name": "惠州", "lat": 23.09, "lng": 114.40, "is_home": true},
+    {"code": "GZQ", "name": "广州", "lat": 23.13, "lng": 113.26, "is_hub": true},
+    {"code": "SZQ", "name": "深圳", "lat": 22.54, "lng": 114.06, "is_hub": true},
+    {"code": "CSQ", "name": "长沙", "lat": 28.19, "lng": 112.98, "is_hub": true},
+    {"code": "NCG", "name": "南昌", "lat": 28.68, "lng": 115.89, "is_hub": true},
+    {"code": "IZG", "name": "赣州", "lat": 25.85, "lng": 114.93, "is_hub": true},
+    {"code": "NNZ", "name": "南宁", "lat": 22.82, "lng": 108.32, "is_hub": true},
+    {"code": "GYW", "name": "贵阳", "lat": 26.65, "lng": 106.63, "is_hub": true},
+    {"code": "CNW", "name": "成都", "lat": 30.67, "lng": 104.06, "is_hub": true},
+    {"code": "CQW", "name": "重庆", "lat": 29.56, "lng": 106.55, "is_hub": true},
+    {"code": "KNM", "name": "昆明", "lat": 25.04, "lng": 102.71, "is_hub": true},
+    {"code": "WHN", "name": "武汉", "lat": 30.59, "lng": 114.30, "is_hub": true},
+    {"code": "ZZQ", "name": "株洲", "lat": 27.83, "lng": 113.13, "is_hub": true},
+    {"code": "HHQ", "name": "怀化", "lat": 27.55, "lng": 109.98, "is_hub": true}
+  ]
+}
